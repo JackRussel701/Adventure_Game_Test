@@ -1,0 +1,67 @@
+import time
+import random
+villain = ["fairy", "pirate", "troll"]
+weapon = ["stick", "hammer", "knife", "shotgun"]
+items = []
+
+def print_time(text):
+    print(text)
+    time.sleep(2)
+
+monster = random.choice(villain)
+utility = random.choice(weapon)
+
+print_time('Hello')
+print_time('You find yourself standing in an open field,')
+print_time('filled with grass and yellow wildflowers.')
+print_time('Rumor has it that a wicked ' + monster + ' is somewhere around here,')
+print_time('and has been terrifying the nearby village')
+print_time('You see a house and a cave.')
+print_time('Enter 1 to knock on the door of the house')
+print_time('Enter 2 to peer into the cave')
+print_time('What would you like to do?')
+
+while True:
+    while True:
+        choice = input('Please enter 1 or 2\n')
+        if choice == '1':
+            print_time('You enter the house')
+            print_time('You see THE ' + monster + ' !')
+            print_time('The '+ monster + ' attacks you!')
+            print_time('Would you like to fight(1) or run away(2)?')
+            fight_run = input('Please enter 1 or 2\n')
+            if fight_run == '1':
+                print_time('You do your best...')
+                print_time('But with just your bare hands, it is hopeless..')
+                print_time('Bummer! You have been defeated!')
+            elif fight_run == '2':
+                print_time('You run back into the field. Luckily, the '+ monster + ' doesnt follow you')
+                print_time('What would you like to do next?')
+            else:
+                print_time('Please enter 1 or 2\n')
+        elif choice == '2':
+            print_time('You enter the dark cave')
+            print_time('Blimey! You see a ' + utility + ' !')
+            print_time('Now you think you have a weapon!')
+            if utility == "shotgun":
+                print_time('With this weapon, you can defeat the ' + monster + '!')
+                items.append("shotgun")
+            else:
+                print_time('But...You cannot win with this stupid ' + utility + ' and you leave it... You loose...')
+        else:
+            print_time('Please only enter 1 or 2\n')
+            print_time('What would you like to do next?\n')
+            print_time('Would you like to fight((1) or run away(2)?\n')
+            if "shotgun" in items:
+                print_time('You take your weapon and as soon as the '+ monster + ' sees it, it runs away! You win!')
+            elif "stick" or "hammer" or "knife" in items:
+                print_time('The monster laughs at the thing in you hands! You loose.....')
+            else:
+                print_time('You run back into the field.')
+    else:
+        play_again = input('Would you like to play again (y/n)?\n').lower()
+        if play_again == 'y':
+            print ('Please enter 1 or 2')
+        elif play_again == 'n':
+            print('See you next time!')
+        break
